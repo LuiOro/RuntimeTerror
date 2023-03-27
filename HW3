@@ -1,0 +1,103 @@
+import re
+
+# The Interpreter Pattern
+class Interpreter:
+    # The `interpret` method takes an input string and returns a lowercase version of it
+    def interpret(self, input):
+        return input.lower()
+
+# The State Pattern
+class State:
+    def __init__(self):
+        # Initialize the current state to "INITIAL"
+        self.current_state = 'INITIAL'
+
+    # The `update_state` method updates the current state to the specified state
+    def update_state(self, new_state):
+        self.current_state = new_state
+
+    # The `get_state` method returns the current state
+    def get_state(self):
+        return self.current_state
+
+# The Observer Pattern
+class Observer:
+    def __init__(self):
+        # Initialize an empty list of listeners
+        self.listeners = []
+
+    # The `add_listener` method adds a listener to the list of listeners
+    def add_listener(self, listener):
+        self.listeners.append(listener)
+
+    # The `remove_listener` method removes a listener from the list of listeners
+    def remove_listener(self, listener):
+        self.listeners.remove(listener)
+
+    # The `notify_listeners` method notifies all listeners in the list with the specified message
+    def notify_listeners(self, message):
+        for listener in self.listeners:
+            listener.notify(message)
+
+# Chat Bot implementation
+class ChatBot(Observer):
+    def __init__(self):
+        super().__init__()
+        # Initialize the Interpreter, State, and responses dictionary
+        self.interpreter = Interpreter()
+        self.state = State()
+        self.responses = {
+            'INITIAL': {
+                'Hello': 'Hi there!',
+                'How are you': 'I am doing well, thank you!',
+                'What is your name?': 'I do not have a name yet, a possible name could be XiBot, You like it?',
+                'Yes': 'Great!',
+                'No': 'Oh ok we will try and improve it :)',
+                'goodbye': 'Goodbye! Have a nice day!'
+            },
+            'GREETING': {
+                'hi': 'Hello!',
+                'howdy': 'Howdy!',
+                'hey': 'Hey there!',
+                'Sup': 'What up!'
+            }
+        }
+
+    # The `process_input` method takes an input string, interprets it, and responds accordingly
+    def process_input(self, input):
+        # Use the Interpreter to interpret the input
+        input = self.interpreter.interpret(input)
+        # Get the current state
+        state = self.state.get_state()
+
+        # Update state based on input and current state
+        if state == 'INITIAL':
+            if input == 'hello':
+                self.state.update_state('GREETING')
+        elif state == 'GREETING':
+            if input == 'goodbye':
+                self.state.update_state('INITIAL')
+
+        # Get the response based on the current state and input
+        response = self.responses[state].get(input, None)
+
+        # Notify listeners with the response
+        if response:
+            self.notify_listeners(response)
+        else:
+            self.notify_listeners("I'm sorry, I didn't understand that.")
+
+# Example usage
+class ConsoleListener:
+    # The `notify` method prints the message to the console
+    def notify(self, message):
+        print(message)
+
+# Create a new ChatBot and add a ConsoleListener to it
+bot = ChatBot()
+bot.add_listener(ConsoleListener())
+
+# Continuously get input from user and process it using the ChatBot
+while True:
+    input_str = input('> ')
+    bot.process_input(input_str)
