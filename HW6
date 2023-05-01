@@ -1,25 +1,30 @@
-import requests
-from datetime import datetime
+# Importing required libraries
+import random
 
-api_key = 'YOUR_API_KEY'  # Replace with your own API key from OpenWeatherMap
-location = input("Enter the city name: ")
+# Creating responses for the chat bot
+responses = {
+    "hello": ["Hi there!", "Hello!", "Hi!"],
+    "how are you": ["I'm doing well, thank you.", "I'm fine, thanks for asking.", "I'm great!"],
+    "what's your name": ["My name is ChatBot.", "I'm ChatBot."],
+    "bye": ["Goodbye!", "Bye!", "See you soon!"]
+}
 
-# Make an API call to OpenWeatherMap to get the weather data for the given location
-weather_url = f"http://api.openweathermap.org/data/2.5/weather?q={location}&appid={api_key}"
-response = requests.get(weather_url)
-weather_data = response.json()
+# Defining a function for the chat bot to respond to user's input
+def chat():
+    while True:
+        user_input = input("You: ")
+        user_input = user_input.lower()
+        
+        if user_input == "quit":
+            break
+            
+        if user_input in responses:
+            bot_response = random.choice(responses[user_input])
+            print("ChatBot:", bot_response)
+        else:
+            print("ChatBot: Sorry, I didn't understand what you said.")
+            
+# Starting the chat bot
+print("Welcome to ChatBot! Type 'quit' to exit.")
+chat()
 
-# Extract the relevant weather information from the API response
-temperature = round(weather_data['main']['temp'] - 273.15, 2)  # Convert temperature from Kelvin to Celsius
-description = weather_data['weather'][0]['description']
-humidity = weather_data['main']['humidity']
-wind_speed = weather_data['wind']['speed']
-cloud_cover = weather_data['clouds']['all']
-
-# Print the weather information to the console
-print(f"\nCurrent weather in {location.upper()} as of {datetime.now().strftime('%d %b %Y %I:%M:%S %p')}")
-print(f"Temperature: {temperature}°C")
-print(f"Description: {description}")
-print(f"Humidity: {humidity}%")
-print(f"Wind speed: {wind_speed} m/s")
-print(f"Cloud cover: {cloud_cover}%")
