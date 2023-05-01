@@ -1,30 +1,25 @@
-# Importing required libraries
 import random
 
-# Creating responses for the chat bot
+# Define some responses to specific input
 responses = {
-    "hello": ["Hi there!", "Hello!", "Hi!"],
-    "how are you": ["I'm doing well, thank you.", "I'm fine, thanks for asking.", "I'm great!"],
-    "what's your name": ["My name is ChatBot.", "I'm ChatBot."],
-    "bye": ["Goodbye!", "Bye!", "See you soon!"]
+    "hello": ["Hello!", "Hi there!", "Hey!"],
+    "how are you?": ["I'm good, thanks for asking!", "I'm doing well, how about you?", "I'm great, how are you doing?"],
+    "what's your name?": ["My name is ChatBot!", "I'm ChatBot, nice to meet you!", "I go by the name ChatBot."],
+    "bye": ["Goodbye!", "See you later!", "Until next time!"]
 }
 
-# Defining a function for the chat bot to respond to user's input
-def chat():
-    while True:
-        user_input = input("You: ")
-        user_input = user_input.lower()
-        
-        if user_input == "quit":
-            break
-            
-        if user_input in responses:
-            bot_response = random.choice(responses[user_input])
-            print("ChatBot:", bot_response)
-        else:
-            print("ChatBot: Sorry, I didn't understand what you said.")
-            
-# Starting the chat bot
-print("Welcome to ChatBot! Type 'quit' to exit.")
-chat()
+# Define a function to generate a response to user input
+def generate_response(input_text):
+    input_text = input_text.lower()
+    for key in responses:
+        if key in input_text:
+            return random.choice(responses[key])
+    return "I'm sorry, I don't understand what you're asking."
 
+# Main loop to read user input and generate responses
+while True:
+    user_input = input("You: ")
+    if user_input.lower() == 'quit':
+        break
+    response = generate_response(user_input)
+    print("ChatBot:", response)
