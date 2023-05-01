@@ -1,0 +1,33 @@
+import unittest
+import requests
+from datetime import datetime
+
+class TestWeatherAPI(unittest.TestCase):
+    
+    def test_weather_data(self):
+        api_key = 'YOUR_API_KEY'  # Replace with your own API key from OpenWeatherMap
+        location = "London"
+        
+        # Make an API call to OpenWeatherMap to get the weather data for the given location
+        weather_url = f"http://api.openweathermap.org/data/2.5/weather?q={location}&appid={api_key}"
+        response = requests.get(weather_url)
+        self.assertEqual(response.status_code, 200) # Check if the status code is 200, indicating a successful request
+        
+        weather_data = response.json()
+
+        # Extract the relevant weather information from the API response
+        temperature = round(weather_data['main']['temp'] - 273.15, 2)  # Convert temperature from Kelvin to Celsius
+        description = weather_data['weather'][0]['description']
+        humidity = weather_data['main']['humidity']
+        wind_speed = weather_data['wind']['speed']
+        cloud_cover = weather_data['clouds']['all']
+
+        # Check if the weather information is of the expected type and format
+        self.assertIsInstance(temperature, float)
+        self.assertIsInstance(description, str)
+        self.assertIsInstance(humidity, int)
+        self.assertIsInstance(wind_speed, float)
+        self.assertIsInstance(cloud_cover, int)
+
+if __name__ == '__main__':
+    unittest.main()
