@@ -1,0 +1,107 @@
+{"intents":[
+  {"tag": "unknown responses",
+    "patterns": ["jsichwjn", "1092iwsmxsjnh", ">?L!", "."],
+    "responses": ["Sorry, I did not understand that."],
+    "context_set": " "
+  },
+  {"tag": "greeting",
+    "patterns": ["Hi", "How are you?", "Is anyone there?", "Hello", "Good day", "Whats up", "Hey", "greetings"],
+    "responses": ["Sorry cant understand","Hello!", "Good to see you again!", "Hi there, how can I help?"],
+    "default": ["Sorry, I did not understand that."],
+    "context_set": ""
+  },
+  {"tag": "goodbye",
+    "patterns": ["cya", "See you later", "Goodbye", "I am Leaving", "Have a Good day", "bye", "cao", "see ya"],
+    "responses": ["Sad to see you go :(", "Talk to you later", "Goodbye!"],
+    "context_set": ""
+  },
+  {"tag": "sad",
+    "patterns": ["I am upset", "Life is unfair", "Will things get better?"],
+    "responses": ["Cheer up!", "We can overcome things!"]
+  },
+  {"tag": "recommendation",
+    "patterns": ["Can you recommend a good restaurant?", "What movie should I watch?", "What book should I read?", "Do you have any suggestions for a fun activity?", "Can you recommend a good workout routine?"],
+    "responses": ["For restaurants, I recommend trying <restaurant 1> or <restaurant 2>.", "I highly recommend watching <movie>, it's one of my favorites.", "If you're looking for a good book, I suggest checking out <book>.", "For a fun activity, you could try <activity>.", "For a good workout routine, you could try <routine>."],
+    "context_set": ""
+  },
+  {"tag": "news",
+    "patterns": ["What's happening in the news today?", "Can you give me a news update?", "What's the latest news?", "What's going on in the world?", "What's the top news story right now?"],
+    "responses": ["Here are the top news stories right now: <news story 1>, <news story 2>, and <news story 3>.", "The latest news is <news story>.", "There's a lot happening in the world right now. Some of the top stories include <news story 1> and <news story 2>.", "The top news story right now is <news story>.", "Here's a quick news update: <news story 1>, <news story 2>, and <news story 3>."],
+    "context_set": ""
+  },
+  {"tag": "age",
+    "patterns": ["How old are you?", "What's your age?", "When were you born?"],
+    "responses": ["I'm an artificial intelligence, I don't have an age!"],
+    "context_set": ""
+  },
+  {"tag": "weather",
+   "patterns": ["What's the weather like?", "Is it going to rain today?", "How hot is it outside?", "What's the temperature?", "Will it snow?"],
+    "responses": ["The weather is sunny/cloudy/rainy today", "It's currently X degrees outside", "There's a chance of rain/snow later today", "The high today will be X degrees", "I'm not sure, would you like me to look it up?"],
+    "context_set": ""
+  },
+  {"tag": "time",
+    "patterns": ["What time is it?", "Do you know the time?", "What's the current time?", "Can you tell me the time?", "Is it late?"],
+    "responses": ["It's currently X o'clock", "The time is X", "It's currently morning/afternoon/evening", "It's getting late, it's X o'clock already!", "I'm sorry, I don't have access to the current time"],
+    "context_set": ""
+  },
+  {"tag": "product",
+    "patterns": ["Do you sell products?", "What products do you have?", "Can I buy something?", "What do you recommend?", "Do you have any specials?"],
+    "responses": ["Yes, we offer a variety of products!", "We sell X, Y, and Z products", "Absolutely, what are you interested in?", "I would recommend X product", "Yes, we have a special promotion on X product"],
+    "context_set": ""
+  },
+  {"tag": "payment",
+    "patterns": ["How much does it cost?", "What's the price?", "Can I pay with a credit card?", "Do you accept PayPal?", "What's your return policy?"],
+    "responses": ["The price is X dollars", "It costs X dollars", "Yes, we accept credit card payments", "We also accept PayPal payments", "Our return policy is X"],
+   "context_set": ""
+  },
+  {"tag": "food",
+    "patterns": ["What's for dinner?", "Do you have any restaurant recommendations?", "What's your favorite cuisine?", "How do I cook <dish>?", "What's a good recipe for <ingredient>?"],
+    "responses": ["For dinner, how about <meal suggestion>?", "I recommend <restaurant> for <cuisine>.", "My favorite cuisine is <cuisine>.", "To cook <dish>, try <cooking method>.", "A good recipe for <ingredient> is <recipe>."],
+    "context_set": ""
+  },
+  {"tag": "music",
+    "patterns": ["What's your favorite music genre?", "What's a good song to listen to?", "What's your favorite band?", "Do you play any instruments?", "What's the best music festival?"],
+    "responses": ["My favorite music genre is <genre>.", "A good song to listen to is <song> by <artist>.", "My favorite band is <band>.", "I play <instrument>.", "The best music festival is <festival>."],
+    "context_set": ""
+  },
+  {"tag": "movies",
+    "patterns": ["What's a good movie to watch?", "Do you like <actor/actress>?", "What's your favorite movie genre?", "Have you seen <movie>?", "What's the best movie of all time?"],
+    "responses": ["A good movie to watch is <movie>.", "I like <actor/actress>.", "My favorite movie genre is <genre>.", "Yes, I've seen <movie>.", "The best movie of all time is <movie>."],
+    "context_set": ""
+  },
+  {"tag": "travel",
+    "patterns": ["Where should I go on vacation?", "What's the best time of year to travel?", "Do you have any travel tips?", "What's your favorite travel destination?", "What's the cheapest way to travel?"],
+    "responses": ["You should go to <destination> for your vacation.", "The best time of year to travel to <destination> is <time of year>.", "Some travel tips include <tip 1>, <tip 2>, and <tip 3>.", "My favorite travel destination is <destination>.", "The cheapest way to travel is by <transportation method>."],
+    "context_set": ""
+  },
+  {"tag": "thanks",
+    "patterns": ["Thanks", "Thank you so much", "Appreciate it"],
+    "responses": ["You're welcome", "No problem", "Glad I could help"],
+    "context_set": ""
+  },
+  {"tag": "help",
+    "patterns": ["Can you help me?", "What can you do?", "I need assistance", "What are your abilities?"],
+    "responses": ["Of course! How can I help?", "Sure, what do you need?", "I'm happy to assist you!", "I can help with a variety of tasks. What do you need?"],
+    "context_set": ""
+  },
+  {"tag": "jokes",
+    "patterns": ["Tell me a joke", "Make me laugh", "Do you know any jokes?", "Funny story"],
+    "responses": ["Why was the computer cold? It left its Windows open!", "What do you call an alligator in a vest? An investi-gator!", "Why did the tomato turn red? Because it saw the salad dressing!", "Why did the scarecrow win an award? Because he was outstanding in his field!", "Why did the chicken cross the playground? To get to the other slide!"],
+    "context_set": ""
+  },
+  {"tag": "personal",
+    "patterns": ["What's your name?", "How old are you?", "Where are you from?", "What do you like?", "Tell me about yourself"],
+    "responses": ["My name is ChatBot", "I don't really have an age, I'm a computer program!", "I was created by a team of developers", "I like chatting with people like you!", "I'm a chatbot designed to help you with various tasks."],
+    "context_set": ""
+  },
+  {"tag": "location",
+    "patterns": ["Where are you located?", "What's your location?", "Where do you live?"],
+    "responses": ["I exist in the digital realm!", "I'm an artificial intelligence", "I don't have a physical location.", "I am located in the server that's hosting me!"],
+    "context_set": ""
+  },
+  {"tag": "interests",
+    "patterns": ["What are your interests?", "What do you like?", "What are your hobbies?"],
+    "responses": ["As an AI, I don't have personal interests or hobbies!", "My interests are answering your questions and helping you out.", "I like conversing with humans!"],
+    "context_set": ""
+  }
+]}
